@@ -26,7 +26,7 @@
         let i = 3;
         const proms = [];
         while (i-- > 0) {
-            id = 1280 + getRandomInt(11000);
+            id = 1 + getRandomInt(6);
             proms.push(
                 fetch("/jogo", { method: "POST", body: JSON.stringify({ idJogo: id }) })
                     .then(resp => resp.json())

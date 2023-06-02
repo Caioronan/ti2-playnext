@@ -13,6 +13,7 @@ import service.AventuraService;
 import service.UsuarioService;
 import service.HomeService;
 import service.EditarService;
+import service.LoginService;
 
 public class Principal {
 
@@ -28,6 +29,7 @@ public class Principal {
 		SteamSyncService steamSyncService = new SteamSyncService();
 		HomeService homeService = new HomeService();
 		EditarService editarService = new EditarService();
+		LoginService loginService = new LoginService();
 
 		port(4500);
 
@@ -70,6 +72,17 @@ public class Principal {
 		post("/usuario/create", usuarioService::postCriarUsuario);
 		post("/usuario/update", usuarioService::postAtualizarUsuario);
 		post("/usuario/delete", usuarioService::postDeletarUsuario);
+
+		// Login
+		post("/login", loginService::postListar);
+		get("/login", loginService::getListar);
+
+		post("/login", loginService::postLerLogin);
+		get("/login/:idlogin", loginService::getLerLogin);
+
+		post("/login/create", loginService::postCriarLogin);
+		post("/login/update", loginService::postAtualizarLogin);
+		post("/login/delete", loginService::postDeletarLogin);
 
 		// Perfil
 		post("/perfil", perfilService::postListar);
